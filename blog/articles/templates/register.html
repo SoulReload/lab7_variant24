@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Регистрация — финансовая аналитика</title>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/auth.css' %}">
+</head>
+<body class="auth-page">
+    <header class="header auth-header">
+        {% include "account_nav.html" %}
+        <a href="{% url 'archive' %}" aria-label="Вернуться в архив статей">
+            <img src="{% static 'articles/finance-logo.svg' %}" alt="Логотип финансовой аналитики">
+        </a>
+        <p class="site-kicker">Вариант 24 · финансовая отчётность предприятий</p>
+        <h1>Регистрация пользователя</h1>
+        <p class="site-description">Создайте учётную запись для работы с публикациями</p>
+    </header>
+
+    <main class="auth-main">
+        <section class="auth-card" aria-labelledby="auth-title">
+            <h2 id="auth-title">Создать аккаунт</h2>
+            <p class="auth-intro">Заполните поля ниже. Логин должен быть уникальным.</p>
+            {% if errors %}
+                <div class="form-error" role="alert">
+                    <ul>{% for error in errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                </div>
+            {% endif %}
+            <form method="post" action="{% url 'register' %}" class="auth-form">
+                {% csrf_token %}
+                <div class="form-field">
+                    <label for="id_username">Логин</label>
+                    <input id="id_username" name="username" type="text" value="{{ form.username|default:'' }}"
+                           maxlength="150" autocomplete="username" placeholder="Придумайте логин" required>
+                </div>
+                <div class="form-field">
+                    <label for="id_email">Электронная почта</label>
+                    <input id="id_email" name="email" type="email" value="{{ form.email|default:'' }}"
+                           autocomplete="email" placeholder="name@example.com" required>
+                </div>
+                <div class="form-field">
+                    <label for="id_password">Пароль</label>
+                    <input id="id_password" name="password" type="password" autocomplete="new-password"
+                           placeholder="Не менее 8 символов" required>
+                </div>
+                <div class="form-field">
+                    <label for="id_password_confirm">Повторите пароль</label>
+                    <input id="id_password_confirm" name="password_confirm" type="password"
+                           autocomplete="new-password" placeholder="Введите пароль ещё раз" required>
+                </div>
+                <div class="form-actions">
+                    <button class="submit-button" type="submit">Зарегистрироваться</button>
+                    <a class="cancel-link" href="{% url 'archive' %}">Отмена</a>
+                </div>
+            </form>
+            <p class="auth-switch">Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></p>
+        </section>
+    </main>
+    <footer class="site-footer">Учебный проект · анализ финансовой отчётности предприятий</footer>
+</body>
+</html>

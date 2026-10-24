@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Архив статей — финансовая аналитика</title>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+</head>
+<body class="archive">
+    <header class="header">
+        {% include "account_nav.html" %}
+        <a href="{% url 'archive' %}" aria-label="На главную — архив статей">
+            <img src="{% static 'articles/finance-logo.svg' %}" alt="Логотип финансовой аналитики">
+        </a>
+        <p class="site-kicker">Вариант 24 · финансовая отчётность предприятий</p>
+        <h1>Архив финансовой аналитики</h1>
+        <p class="site-description">Аналитические заметки о динамике показателей предприятий холдинга</p>
+        <nav class="site-nav">
+            <a href="{% url 'financial-dashboard' %}">Финансовая сводка</a>
+            {% if user.is_authenticated %}
+                <span class="nav-divider">·</span>
+                <a href="{% url 'create_post' %}">Написать статью</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="archive-content">
+        <section class="student-lab" aria-labelledby="student-lab-title">
+            <h2 id="student-lab-title">JavaScript: список студентов</h2>
+            <p>Демонстрация массива объектов и фильтрации по группе или среднему баллу. Все начальные данные также выводятся в консоль разработчика.</p>
+            <div class="student-filters">
+                <div class="student-filter">
+                    <label for="group-filter-input">Фильтр по группе</label>
+                    <div class="filter-controls">
+                        <input id="group-filter-input" type="text" placeholder="Например, ПИС-24-1" autocomplete="off">
+                        <button id="group-filter-button" type="button">Найти группу</button>
+                    </div>
+                </div>
+                <div class="student-filter">
+                    <label for="average-filter-input">Средний балл выше</label>
+                    <div class="filter-controls">
+                        <input id="average-filter-input" type="number" min="1" max="5" step="0.1" placeholder="Например, 4">
+                        <button id="average-filter-button" type="button">Фильтровать</button>
+                    </div>
+                </div>
+                <button id="show-all-students-button" class="secondary-button" type="button">Показать всех студентов</button>
+            </div>
+            <p id="student-filter-status" class="student-filter-status" role="status" aria-live="polite">Показаны все студенты.</p>
+            <div class="student-table-wrap">
+                <table class="student-table">
+                    <thead>
+                        <tr><th>Имя</th><th>Фамилия</th><th>Группа</th><th>Оценки</th><th>Средний балл</th></tr>
+                    </thead>
+                    <tbody id="student-results">
+                        <tr><td colspan="5">Загрузка списка студентов…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <h2 class="section-title">Статьи аналитиков</h2>
+        {% for post in posts %}
+            <article class="one-post">
+                <h2 class="post-title"><a href="{% url 'get_article' article_id=post.id %}">{{ post.title }}</a></h2>
+                <div class="article-info">
+                    <div class="article-author">Автор: {{ post.author.username }}</div>
+                    <div class="article-created-date">{{ post.created_date|date:"d.m.Y" }}</div>
+                </div>
+                <p class="article-text">{{ post.get_excerpt }}</p>
+                <div class="post-actions">
+                    <p class="read-more"><a href="{% url 'get_article' article_id=post.id %}">Читать статью →</a></p>
+                    <button type="button" class="fold-button" aria-expanded="true">свернуть</button>
+                </div>
+            </article>
+        {% empty %}
+            <p class="empty-state">Статей пока нет. Добавьте аналитическую заметку через <a href="/admin/">административную панель</a>.</p>
+        {% endfor %}
+    </main>
+    <footer class="site-footer">Учебный проект · анализ финансовой отчётности предприятий</footer>
+
+    <script src="{% static 'js/helloworld.js' %}"></script>
+    <script src="{% static 'js/fold-post.js' %}"></script>
+</body>
+</html>

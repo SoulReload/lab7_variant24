@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">Финансовая аналитика</title>
+  <rect width="120" height="120" rx="24" fill="#ffffff"/>
+  <path d="M22 91H98" stroke="#b7d9d1" stroke-width="5" stroke-linecap="round"/>
+  <rect x="27" y="61" width="14" height="30" rx="3" fill="#1abc9c"/>
+  <rect x="51" y="43" width="14" height="48" rx="3" fill="#179f88"/>
+  <rect x="75" y="26" width="14" height="65" rx="3" fill="#117967"/>
+  <path d="m25 49 22-12 17 5 28-24" fill="none" stroke="#1c5148" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M80 18h12v12" fill="none" stroke="#1c5148" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

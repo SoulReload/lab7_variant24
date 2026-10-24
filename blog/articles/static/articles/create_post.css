@@ -1,0 +1,263 @@
+/* Dedicated, page-specific styles for the Lab 5 article creation form. */
+.create-post-page {
+    --form-ink: #173b35;
+    --form-muted: #55706a;
+    --form-border: #bfd5cf;
+    --form-accent: #087f68;
+    --form-accent-dark: #066653;
+    background: linear-gradient(135deg, #dff7f0 0%, #f5fbf8 56%, #e6f7f1 100%);
+    color: var(--form-ink);
+}
+
+.create-post-page .create-header {
+    background: #159c83;
+    color: #fff;
+    border-bottom: 0;
+    box-shadow: 0 4px 18px rgba(16, 93, 77, .14);
+}
+
+.create-post-page .create-header h1 {
+    margin-top: 14px;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.create-post-page .create-main {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 28px 0 54px;
+}
+
+.create-post-page .back-link {
+    margin: 0 0 18px;
+}
+
+.create-post-page .back-link a {
+    color: #075e50;
+    font-size: 1.05rem;
+}
+
+.create-post-page .form-panel {
+    width: 100%;
+    padding: clamp(24px, 4vw, 48px);
+    color: var(--form-ink);
+    background: #fff;
+    border: 1px solid rgba(8, 127, 104, .16);
+    border-radius: 20px;
+    box-shadow: 0 18px 48px rgba(22, 78, 66, .13);
+}
+
+.create-post-page .form-heading-block {
+    margin: 0 0 34px;
+    padding: 0 0 26px;
+    border-bottom: 1px solid #e2efeb;
+}
+
+.create-post-page .form-step {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--form-accent);
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+}
+
+.create-post-page .form-panel h2 {
+    margin: 0 0 10px;
+    color: #124e43;
+    font-size: clamp(1.45rem, 3vw, 2rem);
+    line-height: 1.25;
+}
+
+.create-post-page .form-intro {
+    max-width: 780px;
+    margin: 0;
+    color: var(--form-muted);
+    font-size: 1.05rem;
+}
+
+.create-post-page .create-post-form {
+    width: 100%;
+}
+
+.create-post-page .form-field {
+    width: 100%;
+    margin: 0 0 30px;
+}
+
+.create-post-page .form-field label {
+    display: block;
+    margin: 0 0 10px;
+    color: #183e36;
+    font-size: 1.12rem;
+    font-weight: 800;
+}
+
+.create-post-page .required-mark {
+    color: #bf3c3c;
+}
+
+.create-post-page .form-field input,
+.create-post-page .form-field textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 17px 18px;
+    border: 1px solid var(--form-border);
+    border-radius: 12px;
+    background: #fbfefd;
+    color: #1c332f;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.65;
+    box-shadow: inset 0 1px 2px rgba(17, 72, 60, .035);
+    transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.create-post-page .form-field input {
+    min-height: 66px;
+}
+
+.create-post-page .form-field textarea {
+    min-height: 440px;
+    height: 440px;
+    resize: vertical;
+}
+
+.create-post-page .form-field input::placeholder,
+.create-post-page .form-field textarea::placeholder {
+    color: #829690;
+    opacity: 1;
+}
+
+.create-post-page .form-field input:focus,
+.create-post-page .form-field textarea:focus {
+    outline: 3px solid rgba(8, 127, 104, .16);
+    border-color: var(--form-accent);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(8, 127, 104, .08);
+}
+
+.create-post-page .field-hint {
+    margin: 8px 2px 0;
+    color: var(--form-muted);
+    font-size: .9rem;
+}
+
+.create-post-page .form-error {
+    margin: 0 0 24px;
+    padding: 16px 18px;
+    border: 1px solid #e6b5b5;
+    border-radius: 12px;
+    background: #fff0f0;
+    color: #8b2525;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.create-post-page .form-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 34px;
+    padding-top: 24px;
+    border-top: 1px solid #e2efeb;
+}
+
+.create-post-page .submit-button,
+.create-post-page .cancel-link {
+    display: inline-flex;
+    min-height: 58px;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    border-radius: 11px;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.25;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.create-post-page .submit-button {
+    border: 1px solid var(--form-accent);
+    background: var(--form-accent);
+    color: #fff;
+    box-shadow: 0 7px 16px rgba(8, 127, 104, .19);
+}
+
+.create-post-page .submit-button:hover,
+.create-post-page .submit-button:focus-visible {
+    background: var(--form-accent-dark);
+    box-shadow: 0 9px 20px rgba(8, 127, 104, .23);
+}
+
+.create-post-page .cancel-link {
+    border: 1px solid #c4d8d2;
+    background: #f7fbf9;
+    color: #245a4f;
+}
+
+.create-post-page .cancel-link:hover,
+.create-post-page .cancel-link:focus-visible {
+    background: #eaf6f1;
+}
+
+.create-post-page .form-note {
+    margin: 16px 4px 0;
+    color: #55706a;
+    font-size: .9rem;
+}
+
+.create-post-page .site-footer {
+    color: #28564d;
+    border-top-color: rgba(31, 105, 88, .2);
+}
+
+@media (max-width: 640px) {
+    .create-post-page .create-main {
+        width: calc(100% - 24px);
+        padding: 18px 0 34px;
+    }
+
+    .create-post-page .form-panel {
+        padding: 24px 18px;
+        border-radius: 15px;
+    }
+
+    .create-post-page .form-heading-block {
+        margin-bottom: 24px;
+        padding-bottom: 20px;
+    }
+
+    .create-post-page .form-field input {
+        min-height: 60px;
+    }
+
+    .create-post-page .form-field input,
+    .create-post-page .form-field textarea {
+        padding: 14px;
+        font-size: 16px;
+    }
+
+    .create-post-page .form-field textarea {
+        min-height: 320px;
+        height: 320px;
+    }
+
+    .create-post-page .form-actions {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .create-post-page .submit-button,
+    .create-post-page .cancel-link {
+        width: 100%;
+        min-height: 56px;
+    }
+}

@@ -1,0 +1,12 @@
+<nav class="account-nav" aria-label="Учётная запись">
+    {% if user.is_authenticated %}
+        <span class="account-greeting">Вы вошли как {{ user.username }}</span>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Выйти</button>
+        </form>
+    {% else %}
+        <a href="{% url 'register' %}">Регистрация</a>
+        <a href="{% url 'login' %}">Войти</a>
+    {% endif %}
+</nav>

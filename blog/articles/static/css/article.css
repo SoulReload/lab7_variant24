@@ -1,0 +1,246 @@
+/* Shared styling for the article archive and a single article (lab 4). */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #1abc9c;
+    font-family: Tahoma, Arial, sans-serif;
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.header {
+    padding: 28px 20px 24px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, .4);
+}
+
+.header img {
+    display: block;
+    width: 318px;
+    max-width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.site-kicker {
+    margin: 18px 0 4px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.header h1 {
+    margin: 4px auto 8px;
+    max-width: 960px;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    line-height: 1.2;
+}
+
+.site-description { margin: 6px auto; max-width: 760px; }
+.site-nav { margin-top: 16px; }
+.site-nav a, .back-link a, .read-more a {
+    color: #ffffff;
+    font-weight: 700;
+    text-underline-offset: 4px;
+}
+
+.archive-content {
+    width: 960px;
+    max-width: calc(100% - 32px);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 26px 0 42px;
+}
+
+.section-title { margin: 0 0 18px; font-size: 1.6rem; }
+.one-post {
+    padding: 20px 0 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, .45);
+}
+
+.post-title { margin: 0 0 10px; font-size: 1.45rem; line-height: 1.35; }
+.post-title a { color: #ffffff; text-decoration: none; }
+.post-title a:hover, .post-title a:focus { text-decoration: underline; }
+
+.article-info { width: 100%; font-size: .92rem; overflow: auto; }
+.article-author {
+    width: 50%;
+    float: left;
+}
+.article-created-date { text-align: right; }
+.article-text { margin: 14px 0; overflow-wrap: anywhere; }
+.article-detail .article-text { font-size: 1.05rem; }
+.article-detail .article-text p { margin: 0 0 1em; }
+.read-more { margin: 8px 0 0; }
+.empty-state { padding: 18px 0; }
+.site-footer {
+    padding: 18px 16px;
+    border-top: 1px solid rgba(255, 255, 255, .4);
+    text-align: center;
+    font-size: .85rem;
+}
+
+@media (max-width: 640px) {
+    .header { padding: 22px 14px; }
+    .archive-content { max-width: calc(100% - 28px); }
+    .article-author { width: 100%; float: none; }
+    .article-created-date { text-align: left; }
+}
+
+
+/* Lab 5: create-article form */
+.nav-divider { margin: 0 10px; opacity: .8; }
+.form-content { max-width: 820px; }
+.form-panel {
+    padding: clamp(20px, 4vw, 36px);
+    color: #20302e;
+    background: #ffffff;
+    border: 1px solid rgba(9, 75, 62, .18);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(12, 75, 63, .12);
+}
+.form-panel h2 { margin: 0 0 8px; color: #125b4f; font-size: 1.55rem; }
+.form-intro { margin: 0 0 24px; color: #596966; }
+.form-field { margin: 0 0 20px; }
+.form-field label { display: block; margin-bottom: 7px; font-weight: 700; color: #20302e; }
+.form-field input, .form-field textarea {
+    display: block; width: 100%; padding: 12px 14px;
+    border: 1px solid #b8cbc6; border-radius: 8px;
+    background: #fbfdfc; color: #20302e;
+    font: inherit; line-height: 1.5;
+}
+.form-field input:focus, .form-field textarea:focus {
+    outline: 3px solid rgba(26, 188, 156, .22); border-color: #149b83;
+}
+.form-field textarea { min-height: 200px; resize: vertical; }
+.form-error {
+    margin: 0 0 18px; padding: 12px 14px;
+    border: 1px solid #e9b5b5; border-radius: 8px;
+    background: #fff1f1; color: #8a2020; font-weight: 700;
+}
+.form-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+.submit-button {
+    border: 0; border-radius: 8px; padding: 12px 20px;
+    background: #126b5b; color: #fff; cursor: pointer;
+    font: inherit; font-weight: 700;
+}
+.submit-button:hover, .submit-button:focus { background: #0c5448; }
+.cancel-link { color: #126b5b; font-weight: 700; text-underline-offset: 3px; }
+@media (max-width: 640px) { .form-panel { padding: 20px 16px; } }
+
+
+/* Lab 6: account links in the upper-right corner of page headers. */
+.header { position: relative; }
+.account-nav {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    z-index: 5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: calc(100% - 36px);
+}
+.account-nav a,
+.account-nav button {
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    text-underline-offset: 4px;
+}
+.account-nav button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.account-nav form { display: inline; margin: 0; }
+.account-greeting { font-size: .88rem; }
+@media (max-width: 640px) {
+    .account-nav {
+        position: static;
+        max-width: 100%;
+        justify-content: flex-end;
+        margin: 0 0 12px;
+        gap: 12px;
+    }
+}
+
+
+/* Лабораторная работа № 7: фильтрация списка студентов */
+.student-lab {
+    margin: 2rem 0 2.5rem;
+    padding: 1.25rem;
+    border: 1px solid #c9e3dc;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #20302e; /* Keep text readable against the white panel; body text is white. */
+    box-shadow: 0 4px 16px rgba(23, 68, 59, 0.06);
+}
+.student-lab .student-filter-status { color: #20302e; }
+.student-lab .student-table { color: #20302e; }
+.student-lab .student-table th { color: #174f43; }
+.student-lab h2 { margin-top: 0; }
+.student-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 1rem;
+    align-items: end;
+    margin: 1.25rem 0;
+}
+.student-filter label {
+    display: block;
+    margin-bottom: .45rem;
+    font-weight: 700;
+}
+.filter-controls { display: flex; gap: .5rem; flex-wrap: wrap; }
+.filter-controls input {
+    flex: 1 1 130px;
+    min-width: 0;
+    padding: .65rem .75rem;
+    border: 1px solid #a8c8bf;
+    border-radius: 8px;
+    font: inherit;
+}
+.student-filters button, .fold-button {
+    padding: .65rem .9rem;
+    border: 1px solid #167b69;
+    border-radius: 8px;
+    background: #167b69;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+.student-filters button:hover, .fold-button:hover { background: #105e50; }
+.student-filters .secondary-button { background: #edf7f4; color: #174f43; }
+.student-filters .secondary-button:hover { background: #d9eee8; }
+.student-filter-status { min-height: 1.5em; font-weight: 700; }
+.student-table-wrap { overflow-x: auto; }
+.student-table { width: 100%; border-collapse: collapse; }
+.student-table th, .student-table td { padding: .65rem .75rem; border-bottom: 1px solid #dce8e4; text-align: left; }
+.student-table th { background: #dff4ed; }
+.student-table tbody tr:nth-child(even) { background: #f7fbf9; }
+.post-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: .8rem; }
+.post-actions .read-more { margin: 0; }
+.fold-button { flex: 0 0 auto; font-size: .9rem; }
+
+/* Класс folded устанавливается на родителе всей статьи (.one-post). */
+.one-post.folded .article-author,
+.one-post.folded .article-created-date,
+.one-post.folded .article-text {
+    display: none;
+}
+
+@media (max-width: 620px) {
+    .student-lab { padding: 1rem; }
+    .filter-controls { flex-direction: column; }
+    .filter-controls button { width: 100%; }
+}

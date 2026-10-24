@@ -1,0 +1,60 @@
+:root {
+    color-scheme: light;
+    --green: #1abc9c;
+    --ink: #20302e;
+    --muted: #64716f;
+    --line: #d9e4e1;
+    --surface: #ffffff;
+}
+
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background: #f1f8f6;
+    color: var(--ink);
+    font-family: Tahoma, Arial, sans-serif;
+    line-height: 1.55;
+}
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding: 1.5rem clamp(1rem, 4vw, 3rem);
+    background: var(--green);
+    color: #12342f;
+    border-bottom: 5px solid #149b83;
+}
+.logo { width: 72px; height: 72px; object-fit: contain; }
+.header h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; line-height: 1.15; }
+.header p { margin: .3rem 0 0; }
+.eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.nav-link { margin-left: auto; padding: .6rem .9rem; border: 1px solid #125b4f; border-radius: .6rem; color: #12342f; text-decoration: none; font-weight: 700; }
+.nav-link:hover { background: rgba(255,255,255,.28); }
+.archive { max-width: 1120px; margin: 0 auto; padding: 1.75rem clamp(1rem, 4vw, 2.5rem) 4rem; }
+.archive > h2, main section > h2 { margin: .4rem 0 1rem; font-family: Georgia, "Times New Roman", serif; }
+.one-post, .enterprise-card {
+    background: var(--surface);
+    margin: 1rem 0;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: .85rem;
+    box-shadow: 0 3px 12px rgba(23, 68, 59, .05);
+}
+.post-title { margin: 0 0 .45rem; font-size: 1.3rem; }
+.article-info { display: flex; gap: 1rem; flex-wrap: wrap; color: var(--muted); font-size: .88rem; }
+.article-text { margin-bottom: 0; white-space: pre-line; }
+.empty-state { padding: 1rem; border: 1px dashed #9bbdb5; border-radius: .75rem; background: #fff; }
+.enterprise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: .9rem; }
+.enterprise-card h3 { margin-top: 0; }
+.enterprise-card p { margin: .35rem 0; overflow-wrap: anywhere; }
+section { margin: 2rem 0; }
+.table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .7rem; background: #fff; }
+table { width: 100%; min-width: 670px; border-collapse: collapse; }
+th, td { padding: .7rem .8rem; text-align: left; border-bottom: 1px solid var(--line); }
+th { background: #d9f5ee; }
+tbody tr:nth-child(even) { background: #f7fbfa; }
+@media (max-width: 620px) {
+    .header { align-items: flex-start; }
+    .nav-link { margin-left: 0; }
+}

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Вход — финансовая аналитика</title>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/auth.css' %}">
+</head>
+<body class="auth-page">
+    <header class="header auth-header">
+        {% include "account_nav.html" %}
+        <a href="{% url 'archive' %}" aria-label="Вернуться в архив статей">
+            <img src="{% static 'articles/finance-logo.svg' %}" alt="Логотип финансовой аналитики">
+        </a>
+        <p class="site-kicker">Вариант 24 · финансовая отчётность предприятий</p>
+        <h1>Вход в систему</h1>
+        <p class="site-description">Войдите, чтобы создавать публикации</p>
+    </header>
+
+    <main class="auth-main auth-main-narrow">
+        <section class="auth-card" aria-labelledby="auth-title">
+            <h2 id="auth-title">Авторизация</h2>
+            <p class="auth-intro">Введите логин и пароль своей учётной записи.</p>
+            {% if errors %}
+                <div class="form-error" role="alert">
+                    <ul>{% for error in errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                </div>
+            {% endif %}
+            <form method="post" action="{% url 'login' %}" class="auth-form">
+                {% csrf_token %}
+                <div class="form-field">
+                    <label for="id_username">Логин</label>
+                    <input id="id_username" name="username" type="text" value="{{ form.username|default:'' }}"
+                           autocomplete="username" placeholder="Ваш логин" required>
+                </div>
+                <div class="form-field">
+                    <label for="id_password">Пароль</label>
+                    <input id="id_password" name="password" type="password" autocomplete="current-password"
+                           placeholder="Ваш пароль" required>
+                </div>
+                <div class="form-actions">
+                    <button class="submit-button" type="submit">Войти</button>
+                    <a class="cancel-link" href="{% url 'archive' %}">На главную</a>
+                </div>
+            </form>
+            <p class="auth-switch">Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+        </section>
+    </main>
+    <footer class="site-footer">Учебный проект · анализ финансовой отчётности предприятий</footer>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Финансовая сводка предприятий</title>
+    <link rel="stylesheet" href="{% static 'articles/archive.css' %}">
+</head>
+<body>
+    <div class="header">
+        <img src="{% static 'articles/finance-logo.svg' %}" alt="Логотип финансовой аналитики" class="logo">
+        <div>
+            <p class="eyebrow">Вариант 24</p>
+            <h1>Финансовая сводка холдинга</h1>
+            <p>Предприятия, отчётные периоды, показатели и валютные курсы</p>
+        </div>
+        <a class="nav-link" href="{% url 'archive' %}">Архив статей</a>
+    </div>
+
+    <main class="archive">
+        <section>
+            <h2>Предприятия холдинга</h2>
+            {% if enterprises %}
+                <div class="enterprise-grid">
+                    {% for enterprise in enterprises %}
+                        <article class="enterprise-card">
+                            <h3>{{ enterprise.name }}</h3>
+                            <p><strong>Реквизиты:</strong> {{ enterprise.requisites }}</p>
+                            <p><strong>Телефон:</strong> {{ enterprise.phone }}</p>
+                            <p><strong>Контактное лицо:</strong> {{ enterprise.contact_person }}</p>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="empty-state">Предприятий пока нет. Добавьте записи через <a href="/admin/">административную панель</a>.</p>
+            {% endif %}
+        </section>
+
+        <section>
+            <h2>Значения финансовых показателей</h2>
+            <div class="table-scroll">
+                <table>
+                    <thead><tr><th>Предприятие</th><th>Период</th><th>Показатель</th><th>Значение</th><th>Валюта</th><th>Важность</th></tr></thead>
+                    <tbody>
+                    {% for item in indicator_values %}
+                        <tr>
+                            <td>{{ item.enterprise.name }}</td>
+                            <td>{{ item.report_period.title }}</td>
+                            <td>{{ item.indicator.name }}</td>
+                            <td>{{ item.value|floatformat:2 }}</td>
+                            <td>{{ item.indicator.get_currency_display }}</td>
+                            <td>{{ item.indicator.importance }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="6">Записи показателей пока не добавлены.</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>Курсы валют</h2>
+            <div class="table-scroll">
+                <table>
+                    <thead><tr><th>Базовая валюта</th><th>Валюта котировки</th><th>Курс</th><th>Дата</th></tr></thead>
+                    <tbody>
+                    {% for rate in exchange_rates %}
+                        <tr><td>{{ rate.base_currency }}</td><td>{{ rate.quote_currency }}</td><td>{{ rate.rate }}</td><td>{{ rate.effective_date|date:"d.m.Y" }}</td></tr>
+                    {% empty %}
+                        <tr><td colspan="4">Курсы валют пока не добавлены.</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

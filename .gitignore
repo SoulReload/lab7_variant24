@@ -1,0 +1,39 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+**/.venv/
+**/venv/
+
+# Local databases (the project DB is intentionally not committed)
+db_project_name
+**/db_project_name
+db.sqlite3
+**/db.sqlite3
+*.sqlite
+*.sqlite3
+*.db
+
+# Secrets and local environment files
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Logs and generated assets
+*.log
+staticfiles/
+media/
+
+# Editors and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+**/db_project_name_backup
+**/db_project_name-*

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Новая статья — финансовая аналитика</title>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/create_post.css' %}?v=20261023-2">
+</head>
+<body class="create-post-page">
+    <header class="header create-header">
+        {% include "account_nav.html" %}
+        <a href="{% url 'archive' %}" aria-label="Вернуться в архив статей">
+            <img src="{% static 'articles/finance-logo.svg' %}" alt="Логотип финансовой аналитики">
+        </a>
+        <p class="site-kicker">Вариант 24 · финансовая отчётность предприятий</p>
+        <h1>Написать статью</h1>
+        <p class="site-description">Создайте аналитическую заметку для архива</p>
+    </header>
+
+    <main class="create-main">
+        <p class="back-link"><a href="{% url 'archive' %}">← Все записи</a></p>
+        <section class="form-panel" aria-labelledby="form-heading">
+            <div class="form-heading-block">
+                <span class="form-step">НОВАЯ ПУБЛИКАЦИЯ</span>
+                <h2 id="form-heading">Новая аналитическая запись</h2>
+                <p class="form-intro">Заполните название и текст. Автор будет указан автоматически по вашей учётной записи.</p>
+            </div>
+
+            <form class="create-post-form" method="POST" action="{% url 'create_post' %}">
+                {% csrf_token %}
+                <div class="form-field">
+                    <label for="id_title">Название статьи <span class="required-mark">*</span></label>
+                    <input id="id_title" type="text" name="title" maxlength="200"
+                           placeholder="Например, Динамика выручки за отчётный период"
+                           value="{{ form.title|default:'' }}" required autocomplete="off">
+                    <p class="field-hint">До 200 символов. Название должно быть уникальным.</p>
+                </div>
+                <div class="form-field">
+                    <label for="id_text">Текст статьи <span class="required-mark">*</span></label>
+                    <textarea id="id_text" name="text" rows="16"
+                              placeholder="Напишите аналитическую заметку: опишите показатели, изменения за отчётные периоды и выводы..." required>{{ form.text|default:'' }}</textarea>
+                    <p class="field-hint">Добавьте достаточно подробный текст, чтобы статья была полезна читателю.</p>
+                </div>
+                {% if form.errors %}
+                    <p class="form-error" role="alert">{{ form.errors }}</p>
+                {% endif %}
+                <div class="form-actions">
+                    <button class="submit-button" type="submit">Сохранить статью</button>
+                    <a class="cancel-link" href="{% url 'archive' %}">Отмена</a>
+                </div>
+            </form>
+        </section>
+        <p class="form-note">Поля, отмеченные звёздочкой, обязательны для заполнения.</p>
+    </main>
+    <footer class="site-footer">Учебный проект · анализ финансовой отчётности предприятий</footer>
+</body>
+</html>

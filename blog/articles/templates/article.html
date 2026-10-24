@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ post.title }} — финансовая аналитика</title>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+</head>
+<body class="article">
+    <header class="header">
+        {% include "account_nav.html" %}
+        <a href="{% url 'archive' %}" aria-label="На главную — архив статей">
+            <img src="{% static 'articles/finance-logo.svg' %}" alt="Логотип финансовой аналитики">
+        </a>
+        <p class="site-kicker">Вариант 24 · финансовая отчётность предприятий</p>
+        <h1>Статья финансового аналитика</h1>
+    </header>
+
+    <main class="archive-content">
+        <p class="back-link"><a href="{% url 'archive' %}">← Все записи</a></p>
+        <article class="one-post article-detail">
+            <h2 class="post-title">{{ post.title }}</h2>
+            <div class="article-info">
+                <div class="article-author">Автор: {{ post.author.username }}</div>
+                <div class="article-created-date">{{ post.created_date|date:"d.m.Y" }}</div>
+            </div>
+            <div class="article-text">{{ post.text|linebreaks }}</div>
+        </article>
+        <p class="back-link back-link-bottom"><a href="{% url 'archive' %}">← Все записи</a></p>
+    </main>
+    <footer class="site-footer">Учебный проект · анализ финансовой отчётности предприятий</footer>
+</body>
+</html>
