@@ -233,10 +233,11 @@ body {
 .fold-button { flex: 0 0 auto; font-size: .9rem; }
 
 /* Класс folded устанавливается на родителе всей статьи (.one-post). */
+/* Скрываем именно содержимое статьи, когда folded установлен на .one-post. */
 .one-post.folded .article-author,
 .one-post.folded .article-created-date,
 .one-post.folded .article-text {
-    display: none;
+    display: none !important;
 }
 
 @media (max-width: 620px) {
